@@ -12,7 +12,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-class My_bot(commands.Bot):
+class My_Bot(commands.Bot):
     async def setup_hook(self):
         await load_extensions()
         await self.tree.sync()
