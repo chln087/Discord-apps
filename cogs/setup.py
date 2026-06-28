@@ -22,9 +22,14 @@ class Setup(commands.Cog):
         print("AFTER DEFER")
         
         guild_id = interaction.guild_id
+
+        print("GUILD ID OK")
         
 ###############獲取id#############
         conn = sqlite3.connect("data/settings.db")
+
+        print("DB OPENED")
+        
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -37,11 +42,20 @@ class Setup(commands.Cog):
                 verify_role.id
             ))
 
+        print("SQL EXECUTED")
+        
         conn.commit()
+
+        print("COMMIT DONE")
+        
         conn.close()
+
+        print("DB CLOSED")
 
 ###############回應###############
         await interaction.followup.send("設定成功！", ephemeral=True)
+
+        print("MESSAGE SENT")
 
 async def setup(bot):
     await bot.add_cog(Setup(bot))
