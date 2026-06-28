@@ -16,7 +16,7 @@ class Setup(commands.Cog):
         welcome_channel: discord.TextChannel,
         verify_role: discord.Role,
     ):
-
+        await interaction.response.defer()
 ###############獲取id#############
         conn = sqlite3.connect("data/settings.db")
         cursor = conn.cursor()
