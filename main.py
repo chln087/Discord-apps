@@ -64,7 +64,7 @@ async def on_ready():
         )
     )
     print(f"目前登入身分 --> {bot.user}")
-    print("已載入(len(slash))個斜線指令")
+    print("已載入 {len(slash)} 個斜線指令")
 
 @bot.tree.command(name="test")
 async def test(interaction: discord.Interaction):
