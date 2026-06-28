@@ -17,6 +17,7 @@ class Setup(commands.Cog):
         verify_role: discord.Role,
     ):
 
+        print("setup trigger")
 ###############獲取id#############
         conn = sqlite3.connect("data/settings.db")
         cursor = conn.cursor()
