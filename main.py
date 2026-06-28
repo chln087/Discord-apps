@@ -53,6 +53,11 @@ async def main():
 @bot.event
 async def on_ready():
     slash = await bot.tree.sync()
+    await bot.change_presence(
+        activity=discord.CustomActivity(
+            name="哦哦哦愛 有你的將來"
+        )
+    )
     print(f"目前登入身分 --> {bot.user}")
     print(f"目前載入 {len(slash)} 個斜線指令")
 
