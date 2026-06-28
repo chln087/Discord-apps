@@ -56,6 +56,9 @@ async def setup_hook():
     print("已完成初始化")
     print(f"已載入 {len(slash)} 個斜線指令")
 
+@bot.event
+async def on_interaction(interaction):
+    print("INTERACTION:", interaction.data)
 
 ##啟動時資訊
 @bot.event
