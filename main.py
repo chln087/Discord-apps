@@ -46,19 +46,17 @@ async def load_extensions():
 
 async def main():
     async with bot:
+        await load_extensions()
+        
+        slash = await bot.tree.sync()
+        print(f"已載入 {len(slash)} 個斜線指令")
+        
         await bot.start(TOKEN)
 
-##############初始化執行################
-@bot.event
-async def setup_hook():
-    await load_extensions()
-    slash = await bot.tree.sync()
-    print("已完成初始化")
-    print(f"已載入 {len(slash)} 個斜線指令")
-
-@bot.event
-async def on_interaction(interaction):
-    print("INTERACTION:", interaction.data)
+@bot.tree.command(name="test")
+async def test(interaction: discord.Interaction):
+    print("TEST HIT")
+    await interaction.response.send_message("OK")
 
 ##啟動時資訊
 @bot.event
@@ -69,12 +67,6 @@ async def on_ready():
         )
     )
     print(f"目前登入身分 --> {bot.user}")
-    
-@bot.tree.command(name="test")
-async def test(interaction: discord.Interaction):
-    print("TEST HIT")
-    await interaction.response.send_message("OK")
-
 
 if __name__ == "__main__":
     asyncio.run(main())
