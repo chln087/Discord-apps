@@ -15,21 +15,13 @@ class Setup(commands.Cog):
         welcome_channel: discord.TextChannel,
         verify_role: discord.Role,
     ):
-        print("SETUP START")
         
         await interaction.response.defer()
 
-        print("AFTER DEFER")
-        
         guild_id = interaction.guild_id
-
-        print("GUILD ID OK")
         
 ###############獲取id#############
-        conn = sqlite3.connect("data/settings.db")
-
-        print("DB OPENED")
-        
+        conn = sqlite3.connect("data/settings.db")       
         cursor = conn.cursor()
 
         cursor.execute("""
@@ -41,21 +33,12 @@ class Setup(commands.Cog):
                 welcome_channel.id,
                 verify_role.id
             ))
-
-        print("SQL EXECUTED")
         
-        conn.commit()
-
-        print("COMMIT DONE")
-        
+        conn.commit()       
         conn.close()
-
-        print("DB CLOSED")
 
 ###############回應###############
         await interaction.followup.send("設定成功！", ephemeral=True)
-
-        print("MESSAGE SENT")
 
 async def setup(bot):
     await bot.add_cog(Setup(bot))
