@@ -15,8 +15,12 @@ class Setup(commands.Cog):
         welcome_channel: discord.TextChannel,
         verify_role: discord.Role,
     ):
+        print("SETUP START")
+        
         await interaction.response.defer()
 
+        print("AFTER DEFER")
+        
         guild_id = interaction.guild_id
         
 ###############獲取id#############
