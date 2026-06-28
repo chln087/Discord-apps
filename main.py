@@ -12,7 +12,12 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix = "%", intents=intents)
+Class My_bot(commands.Bot):
+    async def setup_hook(self)
+        await load_extensions()
+        await self.tree.sync()
+
+bot = My_Bot(command_prefix = "%", intents=intents)
 
 ##載入程式檔案
 @bot.command()
@@ -46,11 +51,6 @@ async def load_extensions():
 
 async def main():
     async with bot:
-        await load_extensions()
-        
-        slash = await bot.tree.sync()
-        print(f"已載入 {len(slash)} 個斜線指令")
-        
         await bot.start(TOKEN)
 
 @bot.tree.command(name="test")
