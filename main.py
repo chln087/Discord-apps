@@ -54,6 +54,8 @@ async def setup_hook():
     await load_extensions()
     slash = await bot.tree.sync()
     print("已完成初始化")
+    print(f"已載入 {len(slash)} 個斜線指令")
+
 
 ##啟動時資訊
 @bot.event
@@ -64,8 +66,7 @@ async def on_ready():
         )
     )
     print(f"目前登入身分 --> {bot.user}")
-    print(f"已載入 {len(slash)} 個斜線指令")
-
+    
 @bot.tree.command(name="test")
 async def test(interaction: discord.Interaction):
     print("TEST HIT")
