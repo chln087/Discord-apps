@@ -65,6 +65,11 @@ async def on_ready():
     )
     print(f"目前登入身分 --> {bot.user}")
 
+@bot.tree.command(name="test")
+async def test(interaction: discord.Interaction):
+    print("TEST HIT")
+    await interaction.response.send_message("OK")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
